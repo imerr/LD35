@@ -1,0 +1,32 @@
+{
+  "type": "rune",
+  "origin": "center",
+  "rune": "bird",
+  "size": [90, 93],
+  "sprite": {
+    "sheet": {
+      "texture": "assets/images/runes.png",
+      "sprites": [
+        {"left": 0, "top": 42, "width": 30, "height": 31},
+        {"left": 30, "top": 42, "width": 30, "height": 31}
+      ]
+    },
+    "animations": {
+      "default": {
+        "frames": [1]
+      },
+      "active": {
+        "frames": [0],
+        "speed": 0.1,
+        "loop": false
+      }
+    }
+  },
+  "body": {
+    "type": "static",
+    "shapes": [
+      {"type": "circle", "radius": 150}
+    ]
+  }
+
+}

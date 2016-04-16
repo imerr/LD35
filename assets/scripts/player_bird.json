@@ -31,7 +31,7 @@
   },
   "body": {
     "type": "dynamic",
-    "gravityScale": 0.05,
+    "gravityScale": 0,
     "linearDamping": 0.8,
     "shapes": [
       {"type": "box", "width": 20, "height": 70, "x": 0, "y": 0},

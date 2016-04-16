@@ -1,0 +1,31 @@
+{
+  "type": "rune",
+  "origin": "center",
+  "size": [135, 126],
+  "sprite": {
+    "sheet": {
+      "texture": "assets/images/runes.png",
+      "sprites": [
+        {"left": 0, "top": 0, "width": 45, "height": 42},
+        {"left": 45, "top": 0, "width": 45, "height": 42}
+      ]
+    },
+    "animations": {
+      "default": {
+        "frames": [1]
+      },
+      "active": {
+        "frames": [0],
+        "speed": 0.1,
+        "loop": false
+      }
+    }
+  },
+  "body": {
+    "type": "static",
+    "shapes": [
+      {"type": "circle", "radius": 150}
+    ]
+  }
+
+}

@@ -8,7 +8,7 @@ Level::~Level() {
 
 }
 
-Level::Level(engine::Game* game) : Scene(game) {
+Level::Level(engine::Game* game) : Scene(game), m_player(nullptr) {
 
 }
 

@@ -1,6 +1,7 @@
 {
-  "type": "sprite",
-  "size": [1024, 576],
+  "type": "bg",
+  "origin": "top-left",
+  "size": [2048, 1152],
   "sprite": {
     "texture": "assets/images/bg.png"
   }

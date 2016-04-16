@@ -7,6 +7,9 @@
 
 #include <Engine/SpriteNode.hpp>
 #include <Engine/util/Event.hpp>
+
+class Rune;
+
 class Player : public engine::SpriteNode {
 protected:
 	// Settings
@@ -17,13 +20,16 @@ protected:
 	float m_jumpStrength;
 	// State
 	uint32_t m_grounded;
+	Rune* m_activeRune;
 	// Event handlers
 	engine::util::BaseEventHandler* m_contactHandler;
+	engine::util::BaseEventHandler* m_presolveContactHandler;
+	engine::util::BaseEventHandler* m_mouseclickHandler;
 public:
 	Player(engine::Scene* scene);
 	~Player();
 	virtual bool initialize(Json::Value& root);
-
+	void ShapeShift(std::string what);
 protected:
 	virtual void OnUpdate(sf::Time interval);
 

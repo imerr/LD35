@@ -1,0 +1,33 @@
+{
+  "type": "sprite",
+  "origin": "bottom-center",
+  "size": [480, 820],
+  "despawn": 2,
+  "sprite": {
+    "sheet": {
+      "texture": "assets/images/explosion.png",
+      "sprites": [
+        {"left": 0, "top": 0, "width": 48, "height": 82},
+        {"left": 48, "top": 0, "width": 48, "height": 82},
+        {"left": 96, "top": 0, "width": 48, "height": 82},
+        {"left": 144, "top": 0, "width": 48, "height": 82},
+        {"left": 192, "top": 0, "width": 48, "height": 82},
+        {"left": 240, "top": 0, "width": 48, "height": 82},
+        {"left": 288, "top": 0, "width": 48, "height": 82},
+        {"left": 336, "top": 0, "width": 48, "height": 82},
+        {"left": 384, "top": 0, "width": 48, "height": 82},
+        {"left": 432, "top": 0, "width": 48, "height": 82},
+        {"left": 480, "top": 0, "width": 48, "height": 82},
+        {"left": 528, "top": 0, "width": 48, "height": 82},
+        {"left": 576, "top": 0, "width": 48, "height": 82}
+      ]
+    },
+    "animations": {
+      "default": {
+        "frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "speed": 0.07142857142,
+        "loop": false
+      }
+    }
+  }
+}

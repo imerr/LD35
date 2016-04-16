@@ -1,0 +1,44 @@
+{
+  "type": "player",
+  "size": [160, 170],
+  "origin": "center",
+  "player": {
+    "canFly": false,
+    "canMove": true,
+    "canJump": false,
+    "speed_x": 3,
+    "speed_y": 0,
+    "jumpStrength": 0
+  },
+  "sprite": {
+    "sheet": {
+      "texture": "assets/images/eye.png",
+      "sprites": [
+        {"left": 0, "top": 0, "width": 16, "height": 17},
+        {"left": 16, "top": 0, "width": 16, "height": 17},
+        {"left": 32, "top": 0, "width": 16, "height": 17},
+        {"left": 48, "top": 0, "width": 16, "height": 17},
+        {"left": 64, "top": 0, "width": 16, "height": 17},
+        {"left": 80, "top": 0, "width": 16, "height": 17}
+      ]
+    },
+    "animations": {
+      "default": {
+        "frames": [0, 1, 2, 3, 4, 5],
+        "speed": 0.15
+      },
+      "moving": {
+        "frames": [0, 1, 2, 3, 4, 5],
+        "speed": 0.15
+      }
+    }
+  },
+  "body": {
+    "type": "dynamic",
+    "linearDamping": 0.8,
+    "fixedRotation": true,
+    "shapes": [
+      {"type": "circle", "radius": 70}
+    ]
+  }
+}

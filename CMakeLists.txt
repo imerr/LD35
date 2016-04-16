@@ -46,7 +46,7 @@ else ()
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mfpmath=sse")
     endif ()
 endif ()
-set(SOURCE_FILES main.cpp LD35.cpp LD35.hpp Level.cpp Level.hpp Player.cpp Player.hpp)
+set(SOURCE_FILES main.cpp LD35.cpp LD35.hpp Level.cpp Level.hpp Player.cpp Player.hpp Background.cpp Background.hpp Rune.cpp Rune.hpp misc.hpp)
 add_executable(LD35 ${SOURCE_FILES})
 
 target_link_libraries(LD35 Engine)

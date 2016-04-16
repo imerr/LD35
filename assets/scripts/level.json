@@ -1,5 +1,5 @@
 {
-  "size": [2048, 576],
+  "size": [3072, 1620],
   "pixelToMeter": 200.0,
   "gravity": [0, 5],
   "debug": false,
@@ -8,6 +8,18 @@
     "ambient": [50, 50, 50]
   },
   "ui": [
+    {
+      "type": "text",
+      "identifier": "rune_desc",
+      "origin": "center",
+      "position": [512, 50],
+      "text": {
+        "font": "assets/lcd_solid.ttf",
+        "size": 20,
+        "text": "",
+        "align": "center"
+      }
+    }
   ],
   "children": [
     {
@@ -17,24 +29,35 @@
         "shapes": [
           {
             "type": "edge",
-            "points": [[0, 0], [0, 576]]
+            "points": [[0, 0], [0, 1620]]
           },
           {
             "type": "edge",
-            "points": [[0, 576], [2048, 576]]
+            "points": [[0, 1620], [3072, 1620]]
           },
           {
             "type": "edge",
-            "points": [[2048, 576], [2048, 0]]
+            "points": [[3072, 1620], [3072, 0]]
           },
-          {
-            "type": "edge",
-            "points": [[2048, 0], [0, 0]]
-          }
+          { "type": "edge", "points": [[3072, 0], [0, 0]] },
+          { "type": "edge", "points": [[0, 260], [984, 260]] },
+          { "type": "edge", "points": [[552, 744], [1752, 744]] },
+          { "type": "chain", "points": [[1956, 216], [1860, 600], [1860, 1390], [1632, 1390], [1644, 468], [1548, 216], [1956, 216]] },
+          { "type": "chain", "points": [[0, 1428], [336, 1452],[624, 1476], [948, 1488], [1620, 1488], [3072, 1488]] }
         ]
       }
     },
     {"childData" : "assets/scripts/bg.json"},
-    {"childData" : "assets/scripts/player_bird.json", "position": [500, 250]}
+    {
+      "type": "sprite",
+      "size": [3072, 1620],
+      "sprite": {
+        "texture": "assets/images/level1.png"
+      }
+    },
+    {"childData" : "assets/scripts/goal.json", "position": [1754, 142]},
+    {"childData" : "assets/scripts/rune_mouse.json", "position": [792, 1332]},
+    {"childData" : "assets/scripts/rune_bird.json", "position": [3000, 1356]},
+    {"childData" : "assets/scripts/player_eye.json", "position": [500, 250]}
   ]
 }
