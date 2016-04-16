@@ -1,0 +1,14 @@
+{
+  "type": "tip",
+  "origin": "center",
+  "size": [84, 90],
+  "sprite": {
+    "texture": "assets/images/info.png"
+  },
+  "body": {
+    "type": "static",
+    "shapes": [
+      {"type": "circle", "radius": 150}
+    ]
+  }
+}

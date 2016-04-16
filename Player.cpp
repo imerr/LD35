@@ -6,6 +6,8 @@
 #include "Level.hpp"
 #include "misc.hpp"
 #include "Rune.hpp"
+#include "Goal.hpp"
+#include "Tip.hpp"
 
 #include <Engine/util/json.hpp>
 #include <Engine/Game.hpp>
@@ -77,6 +79,15 @@ Player::Player(engine::Scene* scene) : SpriteNode(scene), m_canMove(true), m_can
 									"Press rightclick to shape-shift into a " + m_activeRune->GetRuneType());
 						}
 					}
+				}
+				if (other->GetType() == NT_GOAL) {
+					contact->SetEnabled(false);
+					static_cast<Goal*>(other)->Win();
+				}
+
+				if (other->GetType() == NT_TIP) {
+					contact->SetEnabled(false);
+					static_cast<Tip*>(other)->Show();
 				}
 			});
 	static_cast<Level*>(scene)->SetPlayer(this);

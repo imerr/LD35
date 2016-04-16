@@ -3,6 +3,7 @@
   "pixelToMeter": 200.0,
   "gravity": [0, 5],
   "debug": false,
+  "next": "assets/scripts/level.json",
   "light" : {
     "enabled": false,
     "ambient": [50, 50, 50]
@@ -19,6 +20,31 @@
         "text": "",
         "align": "center"
       }
+    },
+    {
+      "type": "text",
+      "identifier": "tip",
+      "origin": "center",
+      "position": [512, 540],
+      "text": {
+        "font": "assets/lcd_solid.ttf",
+        "size": 20,
+        "text": "",
+        "align": "center"
+      }
+    },
+    {
+      "type": "text",
+      "identifier": "won",
+      "origin": "center",
+      "position": [512, 280],
+      "text": {
+        "font": "assets/lcd_solid.ttf",
+        "size": 20,
+        "text": "Yay! You completed the level! Right-Click to continue",
+        "align": "center"
+      },
+      "active": false
     }
   ],
   "children": [
@@ -55,9 +81,10 @@
         "texture": "assets/images/level1.png"
       }
     },
-    {"childData" : "assets/scripts/goal.json", "position": [1754, 142]},
+    {"childData" : "assets/scripts/tip.json", "position": [152, 228], "tip": "You can move by left-clicking where you want to go"},
     {"childData" : "assets/scripts/rune_mouse.json", "position": [792, 1332]},
     {"childData" : "assets/scripts/rune_bird.json", "position": [3000, 1356]},
-    {"childData" : "assets/scripts/player_eye.json", "position": [500, 250]}
+    {"childData" : "assets/scripts/goal.json", "position": [1754, 142]},
+    {"childData" : "assets/scripts/player_eye.json", "position": [152, 228]}
   ]
 }

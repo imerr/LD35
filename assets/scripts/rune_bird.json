@@ -7,8 +7,8 @@
     "sheet": {
       "texture": "assets/images/runes.png",
       "sprites": [
-        {"left": 0, "top": 42, "width": 30, "height": 31},
-        {"left": 30, "top": 42, "width": 30, "height": 31}
+        {"left": 0, "top": 43, "width": 30, "height": 31},
+        {"left": 30, "top": 43, "width": 30, "height": 31}
       ]
     },
     "animations": {

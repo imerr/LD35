@@ -10,6 +10,7 @@
 class Level: public engine::Scene {
 protected:
 	Player* m_player;
+	std::string m_next;
 public:
 	Level(engine::Game* game);
 	~Level();
@@ -21,6 +22,10 @@ public:
 			m_player = player;
 		}
 	}
+
+	virtual bool initialize(Json::Value& root);
+
+	void Next();
 };
 
 
