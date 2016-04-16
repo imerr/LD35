@@ -1,0 +1,46 @@
+{
+  "type": "player",
+  "size": [52, 20],
+  "origin": "center",
+  "player": {
+    "canFly": false,
+    "canMove": true,
+    "canJump": true,
+    "speed_x": 0.5,
+    "speed_y": 0,
+    "jumpStrength": 2
+  },
+  "sprite": {
+    "sheet": {
+      "texture": "assets/images/mouse.png",
+      "sprites": [
+        {"left": 0, "top": 0, "width": 13, "height": 5},
+        {"left": 0, "top": 5, "width": 13, "height": 5},
+        {"left": 0, "top": 10, "width": 13, "height": 5},
+        {"left": 0, "top": 15, "width": 13, "height": 5},
+        {"left": 0, "top": 20, "width": 13, "height": 5}
+      ]
+    },
+    "animations": {
+      "default": {
+        "frames": [0, 2],
+        "speed": 0.5
+      },
+      "moving": {
+        "frames": [0, 1, 2, 3, 4],
+        "speed": 0.16
+      }
+    }
+  },
+  "body": {
+    "type": "dynamic",
+    "fixedRotation": true,
+    "linearDamping": 0.8,
+    "shapes": [
+      {"type": "box", "width": 50, "height": 10, "x": 0, "y": -6},
+      {"friction": 1.0, "type": "box", "width": 35, "height": 14, "x": 0, "y": -4},
+      {"friction": 1.0, "type": "circle", "radius":7, "x": -18, "y": -4},
+      {"friction": 1.0, "type": "circle", "radius":7, "x": 18, "y": -4}
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "type": "player",
+  "size": [40, 76],
+  "origin": "center",
+  "player": {
+    "canFly": true,
+    "canMove": true,
+    "canJump": false,
+    "speed_x": 2,
+    "speed_y": 0.8,
+    "jumpStrength": 2
+  },
+  "sprite": {
+    "sheet": {
+      "texture": "assets/images/bird.png",
+      "sprites": [
+        {"left": 0, "top": 0, "width": 10, "height": 19},
+        {"left": 0, "top": 19, "width": 10, "height": 19}
+      ]
+    },
+    "animations": {
+      "default": {
+        "frames": [0],
+        "speed": 0.5
+      },
+      "moving": {
+        "frames": [0, 1],
+        "speed": 0.1
+      }
+    }
+  },
+  "body": {
+    "type": "dynamic",
+    "gravityScale": 0.05,
+    "linearDamping": 0.8,
+    "shapes": [
+      {"type": "box", "width": 20, "height": 70, "x": 0, "y": 0},
+      {"type": "box", "width": 35, "height": 12, "x": 0, "y": 0}
+    ]
+  }
+}

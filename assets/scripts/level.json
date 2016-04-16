@@ -1,15 +1,40 @@
 {
-  "size": [1024, 576],
-  "pixelToMeter": 50.0,
-  "gravity": [0, 9.87],
+  "size": [2048, 576],
+  "pixelToMeter": 200.0,
+  "gravity": [0, 5],
+  "debug": false,
   "light" : {
-    "enabled": true,
-    "backgroundColor": [50, 50, 50]
+    "enabled": false,
+    "ambient": [50, 50, 50]
   },
   "ui": [
   ],
   "children": [
+    {
+      "type": "node",
+      "body": {
+        "type": "static",
+        "shapes": [
+          {
+            "type": "edge",
+            "points": [[0, 0], [0, 576]]
+          },
+          {
+            "type": "edge",
+            "points": [[0, 576], [2048, 576]]
+          },
+          {
+            "type": "edge",
+            "points": [[2048, 576], [2048, 0]]
+          },
+          {
+            "type": "edge",
+            "points": [[2048, 0], [0, 0]]
+          }
+        ]
+      }
+    },
     {"childData" : "assets/scripts/bg.json"},
-    {"childData" : "assets/scripts/player.json"}
+    {"childData" : "assets/scripts/player_bird.json", "position": [500, 250]}
   ]
 }
