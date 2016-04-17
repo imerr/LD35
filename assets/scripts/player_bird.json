@@ -8,7 +8,7 @@
     "canMove": true,
     "canJump": false,
     "speed_x": 2,
-    "speed_y": 0.8,
+    "speed_y": 1.5,
     "jumpStrength": 2
   },
   "sprite": {

@@ -1,0 +1,21 @@
+{
+  "type": "sprite",
+  "origin": "center",
+  "opaque": false,
+  "size": [498, 480],
+  "sprite": {
+    "_comment": "We need the sheet to support tiling (by setting width/height of sprite), otherwise it'll just stretch the texture",
+    "sheet" :{
+      "texture": "assets/images/wall.png",
+      "sprites": [
+        {"left":0, "top":0, "width": 249, "height": 240}
+      ]
+    }
+  },
+  "body": {
+    "type": "static",
+    "shapes": [
+      {"type": "box", "width": 498, "height": 480}
+    ]
+  }
+}

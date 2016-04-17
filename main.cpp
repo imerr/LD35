@@ -6,6 +6,7 @@
 #include "Tip.hpp"
 #include "MagicLight.hpp"
 #include "OneWayPlatform.hpp"
+#include "Switch.hpp"
 #include <Engine/Factory.hpp>
 
 int main() {
@@ -16,6 +17,7 @@ int main() {
 	engine::Factory::RegisterType("tip", engine::Factory::CreateChildNode<Tip>);
 	engine::Factory::RegisterType("magicLight", engine::Factory::CreateChildNode<MagicLight>);
 	engine::Factory::RegisterType("oneWayPlatform", engine::Factory::CreateChildNode<OneWayPlatform>);
+	engine::Factory::RegisterType("switch", engine::Factory::CreateChildNode<Switch>);
 
 	LD35 game;
 	game.run();

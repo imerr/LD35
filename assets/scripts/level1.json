@@ -93,6 +93,17 @@
         "text": "Press M to toggle music",
         "align": "left"
       }
+    },
+    {
+      "type": "text",
+      "origin": "center",
+      "position": [1020, 560],
+      "text": {
+        "font": "assets/lcd_solid.ttf",
+        "size": 14,
+        "text": "Press R to reset if you get stuck (sorry!)",
+        "align": "right"
+      }
     }
   ],
   "children": [

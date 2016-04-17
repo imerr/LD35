@@ -1,0 +1,27 @@
+{
+  "type": "switch",
+  "size": [80, 64],
+  "sprite": {
+    "sheet": {
+      "texture": "assets/images/switch.png",
+      "sprites": [
+        {"top": 0, "left": 0, "width": 20, "height": 16},
+        {"top": 0, "left": 20, "width": 20, "height": 16}
+      ]
+    },
+    "animations": {
+      "default": {
+        "frames": [0]
+      },
+      "active": {
+        "frames": [1]
+      }
+    }
+  },
+  "body": {
+    "type": "static",
+    "shapes": [
+      {"type": "circle", "radius" : 100}
+    ]
+  }
+}

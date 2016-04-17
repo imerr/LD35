@@ -1,0 +1,32 @@
+{
+  "type": "rune",
+  "origin": "center",
+  "rune": "eye",
+  "size": [60, 69],
+  "sprite": {
+    "sheet": {
+      "texture": "assets/images/runes.png",
+      "sprites": [
+        {"left": 0, "top": 74, "width": 20, "height": 23},
+        {"left": 20, "top": 74, "width": 20, "height": 23}
+      ]
+    },
+    "animations": {
+      "default": {
+        "frames": [1]
+      },
+      "active": {
+        "frames": [0],
+        "speed": 0.1,
+        "loop": false
+      }
+    }
+  },
+  "body": {
+    "type": "static",
+    "shapes": [
+      {"type": "circle", "radius": 100}
+    ]
+  }
+
+}

@@ -8,6 +8,7 @@
 #include "Rune.hpp"
 #include "Goal.hpp"
 #include "Tip.hpp"
+#include "Switch.hpp"
 
 #include <Engine/util/json.hpp>
 #include <Engine/Game.hpp>
@@ -21,7 +22,7 @@
 
 Player::Player(engine::Scene* scene) : SpriteNode(scene), m_canMove(true), m_canJump(true), m_canFly(false),
 									   m_speed(0, 0), m_jumpStrength(0),
-									   m_grounded(0), m_activeRune(nullptr) {
+									   m_grounded(0), m_activeRune(nullptr), m_activeSwitch(nullptr) {
 
 	m_mouseclickHandler = m_scene->GetGame()->OnMouseClick.MakeHandler([this](const sf::Event::MouseButtonEvent& m) {
 		if (m_activeRune && m.button == sf::Mouse::Right) {
@@ -31,6 +32,9 @@ Player::Player(engine::Scene* scene) : SpriteNode(scene), m_canMove(true), m_can
 			if (runeDesc) {
 				static_cast<engine::Text*>(runeDesc)->SetText("");
 			}
+		}
+		if (m_activeSwitch && m.button == sf::Mouse::Right) {
+			m_activeSwitch->Flip();
 		}
 	});
 	m_contactHandler = m_scene->OnContact.MakeHandler([this](b2Contact* contact, bool begin) {
@@ -94,8 +98,8 @@ Player::Player(engine::Scene* scene) : SpriteNode(scene), m_canMove(true), m_can
 					contact->SetEnabled(false);
 					static_cast<Tip*>(other)->Show();
 				}
-				if (other->GetType() == NT_ONEWAYPLATFORM) {
-					if (this->m_canFly) {
+				if (other->GetType() == NT_ONEWAYPLATFORM ) {
+					if (this->m_canFly || !m_canJump) {
 						contact->SetEnabled(false);
 						return;
 					}
@@ -112,6 +116,12 @@ Player::Player(engine::Scene* scene) : SpriteNode(scene), m_canMove(true), m_can
 					}
 					if (myAABB.upperBound.y > aabb.upperBound.y) {
 						contact->SetEnabled(false);
+					}
+				}
+				if (other->GetType() == NT_SWITCH) {
+					contact->SetEnabled(false);
+					if (m_filename == "assets/scripts/player_eye.json") {
+						m_activeSwitch = static_cast<Switch*>(other);
 					}
 				}
 			});
@@ -153,7 +163,7 @@ void Player::OnUpdate(sf::Time interval) {
 	auto vel = m_body->GetLinearVelocity();
 	auto pos = GetPosition();
 	auto toPos = m_scene->GetGame()->GetMousePosition();
-	if (!m_activeRune && m_grounded && m_canJump && sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
+	if (!m_activeRune && !m_activeSwitch && m_grounded && m_canJump && sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
 		vel.y = -m_jumpStrength;
 	}
 	if (m_canMove && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
@@ -223,6 +233,20 @@ void Player::OnUpdate(sf::Time interval) {
 			}
 		} else {
 			m_activeRune->PlayAnimation("active", "default");
+		}
+	}
+	if (m_activeSwitch) {
+		auto dist = (GetPosition() - m_activeSwitch->GetPosition());
+		float d = sqrtf(dist.x * dist.x + dist.y * dist.y);
+		if (d > 150) {
+			m_activeSwitch = nullptr;
+			engine::Node* switchDesc = m_scene->GetUi()->GetChildByID("switch_desc");
+			if (switchDesc) {
+				static_cast<engine::Text*>(switchDesc)->SetActive(false);
+			}
+		} else {
+			engine::Node* switchDesc = m_scene->GetUi()->GetChildByID("switch_desc");
+			static_cast<engine::Text*>(switchDesc)->SetActive(true);
 		}
 	}
 }

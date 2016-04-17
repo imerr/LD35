@@ -45,6 +45,11 @@ void Level::update(sf::Time interval) {
 			pauseScreen->SetActive(true);
 		}
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
+		m_next = m_filename;
+		Next();
+		return;
+	}
 	if (m_paused) {
 		m_ui->update(interval);
 		if (m_game->IsFocus() && sf::Mouse::isButtonPressed(sf::Mouse::Right)) {

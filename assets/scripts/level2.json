@@ -3,7 +3,7 @@
   "pixelToMeter": 200.0,
   "gravity": [0, 5],
   "debug": false,
-  "next": "assets/scripts/level.json",
+  "next": "assets/scripts/level3.json",
   "light" : {
     "enabled": true,
     "ambient": [80, 80, 80]
@@ -92,6 +92,17 @@
         "size": 14,
         "text": "Press M to toggle music",
         "align": "left"
+      }
+    },
+    {
+      "type": "text",
+      "origin": "center",
+      "position": [1020, 560],
+      "text": {
+        "font": "assets/lcd_solid.ttf",
+        "size": 14,
+        "text": "Press R to reset if you get stuck (sorry!)",
+        "align": "right"
       }
     }
   ],
@@ -742,6 +753,11 @@
         {
           "childData" : "assets/scripts/ladder.json",
           "position" : [ 104, 618 ]
+        },
+        {
+          "childData" : "assets/scripts/tip.json",
+          "position" : [ 362, 934 ],
+          "tip": "You can jump in some shapes using right-click"
         }
       ]
     },

@@ -7,7 +7,7 @@
 #include <iostream>
 
 MagicLight::MagicLight(engine::Scene* scene) : SpriteNode(scene), m_moving(false), m_moveSpeed(0), m_moveTime(0),
-											   m_switching(false), m_onTime(0), m_offTime(0), m_switchTime(0) {
+											   m_switching(false), m_onTime(0), m_offTime(0), m_switchTime(0), m_toggle(true) {
 }
 
 MagicLight::~MagicLight() {
@@ -23,10 +23,12 @@ bool MagicLight::initialize(Json::Value& root) {
 	m_switching = root.get("switching", false).asBool();
 	m_onTime = root.get("onTime", 3.0f).asFloat();
 	m_offTime = root.get("offTime", 3.0f).asFloat();
+	m_toggle = root.get("toggle", true).asBool();
 	return true;
 }
 
 void MagicLight::OnUpdate(sf::Time interval) {
+	if (!m_toggle) return;
 	auto head = m_children.front();
 	auto light = static_cast<engine::Light*>(head->GetChildren().front());
 	if (m_moving) {
@@ -67,6 +69,17 @@ void MagicLight::OnInitializeDone() {
 	light->SetAngle((GetRotation() + 75) * engine::util::fPI / 180);
 	m_moveTime = m_moveSpeed/2;
 }
+
+void MagicLight::Toggle() {
+	auto head = m_children.front();
+	auto light = static_cast<engine::Light*>(head->GetChildren().front());
+	m_toggle = !m_toggle;
+	light->SetActive(m_toggle);
+	m_switchTime = 0;
+	m_moveTime = 0;
+}
+
+
 
 
 

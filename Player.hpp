@@ -11,6 +11,7 @@
 #include <memory>
 
 class Rune;
+class Switch;
 
 class Player : public engine::SpriteNode {
 protected:
@@ -23,6 +24,7 @@ protected:
 	// State
 	uint32_t m_grounded;
 	Rune* m_activeRune;
+	Switch* m_activeSwitch;
 	// Event handlers
 	engine::util::BaseEventHandler* m_contactHandler;
 	engine::util::BaseEventHandler* m_presolveContactHandler;

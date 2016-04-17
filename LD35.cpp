@@ -5,7 +5,7 @@
 
 LD35::LD35() {
 	m_windowTitle = "LD35 - To be named";
-	m_scene = engine::Factory::create<Level>("assets/scripts/level.json", this);
+	m_scene = engine::Factory::create<Level>("assets/scripts/level1.json", this);
 	m_music.reset(engine::ResourceManager::instance()->MakeSound("assets/sound/music.wav"));
 	if (m_music) {
 		m_music->setLoop(true);

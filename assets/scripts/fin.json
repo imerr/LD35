@@ -1,0 +1,328 @@
+{
+  "size": [3072, 1620],
+  "pixelToMeter": 200.0,
+  "gravity": [0, 5],
+  "debug": false,
+  "next": "assets/scripts/fin.json",
+  "light" : {
+    "enabled": false,
+    "ambient": [80, 80, 80]
+  },
+  "ui": [
+    {
+      "type": "text",
+      "identifier": "rune_desc",
+      "origin": "center",
+      "position": [512, 50],
+      "text": {
+        "font": "assets/lcd_solid.ttf",
+        "size": 20,
+        "text": "",
+        "align": "center"
+      }
+    },
+    {
+      "type": "text",
+      "active": false,
+      "identifier": "switch_desc",
+      "origin": "center",
+      "position": [512, 50],
+      "text": {
+        "font": "assets/lcd_solid.ttf",
+        "size": 20,
+        "text": "Right-click to toggle switch",
+        "align": "center"
+      }
+    },
+    {
+      "type": "text",
+      "identifier": "tip",
+      "origin": "center",
+      "position": [512, 540],
+      "text": {
+        "font": "assets/lcd_solid.ttf",
+        "size": 20,
+        "text": "",
+        "align": "center"
+      }
+    },
+    {
+      "type": "text",
+      "identifier": "won",
+      "origin": "center",
+      "position": [512, 280],
+      "text": {
+        "font": "assets/lcd_solid.ttf",
+        "size": 20,
+        "text": "Yay! You completed the level! Right-Click to continue",
+        "align": "center"
+      },
+      "active": false
+    },
+    {
+      "type": "text",
+      "identifier": "lost",
+      "origin": "center",
+      "position": [512, 280],
+      "text": {
+        "font": "assets/lcd_solid.ttf",
+        "size": 20,
+        "text": "Oh no! :( You lost... Right-Click to try again",
+        "align": "center"
+      },
+      "active": false
+    },
+    {
+      "type": "sprite",
+      "identifier": "paused",
+      "origin": "top-left",
+      "size": [1024, 576],
+      "active": false,
+      "sprite": {
+        "texture": "assets/images/paused.png"
+      },
+      "children": [
+        {
+          "type": "text",
+          "identifier": "won",
+          "origin": "center",
+          "position": [512, 280],
+          "text": {
+            "font": "assets/lcd_solid.ttf",
+            "size": 20,
+            "text": "Right-click to continue",
+            "align": "center"
+          }
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "origin": "center",
+      "position": [0, 560],
+      "text": {
+        "font": "assets/lcd_solid.ttf",
+        "size": 14,
+        "text": "Press M to toggle music",
+        "align": "left"
+      }
+    },
+    {
+      "type": "text",
+      "origin": "center",
+      "position": [1020, 560],
+      "text": {
+        "font": "assets/lcd_solid.ttf",
+        "size": 14,
+        "text": "Press R to reset if you get stuck (sorry!)",
+        "align": "right"
+      }
+    }
+  ],
+  "children": [
+    {
+      "type": "node",
+      "body": {
+        "type": "static",
+        "shapes": [
+          {
+            "type": "edge",
+            "points": [[0, 0], [0, 1620]]
+          },
+          {
+            "type": "edge",
+            "points": [[0, 1620], [3072, 1620]]
+          },
+          {
+            "type": "edge",
+            "points": [[3072, 1620], [3072, 0]]
+          },
+          { "type": "edge", "points": [[3072, 0], [0, 0]] }
+        ]
+      }
+    },
+    {
+      "type": "bg",
+      "origin": "top-left",
+      "size": [2048, 1152],
+      "sprite": {
+        "sheet":  {
+          "texture":"assets/images/bg2_wall.png",
+          "sprites": [
+            {"width": 996, "height": 560}
+          ]
+        }
+      }
+    },
+    {
+      "type": "bg",
+      "origin": "top-left",
+      "size": [2560, 1440],
+      "sprite": {
+        "sheet":  {
+          "texture":"assets/images/bg2_arch.png",
+          "sprites": [
+            {"width": 412, "height": 230}
+          ]
+        }
+      }
+    },
+    {
+      "children" : [
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 752, 794 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 917, 794 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 1084, 794 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 1250, 794 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 586, 794 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 420, 794 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 1416, 794 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor_corner.json",
+          "position" : [ 1517, 794 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1517, 852 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1517, 899 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1517, 947 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_block.json",
+          "position" : [ 1250, 1068 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_block.json",
+          "position" : [ 752, 1068 ]
+        },
+        {
+          "childData" : "assets/scripts/confetti.json",
+          "position" : [ 637, 761 ]
+        },
+        {
+          "childData" : "assets/scripts/confetti.json",
+          "position" : [ 959, 761 ]
+        },
+        {
+          "childData" : "assets/scripts/confetti.json",
+          "position" : [ 1264, 757 ]
+        },
+        {
+          "childData" : "assets/scripts/confetti.json",
+          "position" : [ 792, 766 ]
+        },
+        {
+          "childData" : "assets/scripts/confetti.json",
+          "position" : [ 1102, 765 ]
+        },
+        {
+          "type": "text",
+          "position": [1000, 600],
+          "text": {
+            "size": 50,
+            "text": "Thanks for playing :)",
+            "font": "assets/lcd_solid.ttf",
+            "align": "center"
+          }
+        },
+        {
+          "childData" : "assets/scripts/brick_strip_small.json",
+          "position" : [ 419, 851 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_block.json",
+          "position" : [ 586, 1068 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1517, 996 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1517, 1044 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1517, 1092 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1517, 1140 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1517, 1188 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1517, 1236 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 1517, 1284 ]
+        },
+        {
+          "childData" : "assets/scripts/goal.json",
+          "position" : [ 1424, 696 ]
+        },
+        {
+          "childData" : "assets/scripts/goal.json",
+          "position" : [ 445, 692 ]
+        }
+      ]
+    },
+    {
+      "childData" : "assets/scripts/player_bird.json",
+      "position" : [ 1102, 765 ]
+    }, //*/
+    {
+      "type": "node",
+      "objects": [
+        "assets/scripts/confetti.json",
+        "assets/scripts/brick_block.json",
+        "assets/scripts/brick_strip_small.json",
+        "assets/scripts/brick_strip.json",
+        "assets/scripts/brick_floor.json",
+        "assets/scripts/brick_floor_corner.json",
+        "assets/scripts/brick_floor_corner_left.json",
+        "assets/scripts/brick_pillar_top.json",
+        "assets/scripts/brick_corner.json",
+        "assets/scripts/brick_corner_bottom.json",
+        "assets/scripts/tip.json",
+        "assets/scripts/ladder.json",
+        "assets/scripts/rune_mouse.json",
+        "assets/scripts/rune_bird.json",
+        "assets/scripts/rune_eye.json",
+        "assets/scripts/goal.json",
+        "assets/scripts/switch.json",
+        "assets/scripts/magic_light.json"
+      ]
+    }
+  ]
+}
