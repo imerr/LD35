@@ -45,6 +45,17 @@
         "align": "center"
       },
       "active": false
+    },
+    {
+      "type": "text",
+      "origin": "center",
+      "position": [0, 560],
+      "text": {
+        "font": "assets/lcd_solid.ttf",
+        "size": 14,
+        "text": "Press M to toggle music",
+        "align": "left"
+      }
     }
   ],
   "children": [

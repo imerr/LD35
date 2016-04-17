@@ -3,11 +3,13 @@
 
 #include <Engine/SpriteNode.hpp>
 #include "misc.hpp"
+#include <SFML/Audio.hpp>
 
 class Goal: public engine::SpriteNode {
 protected:
 	bool m_won;
 	engine::util::BaseEventHandler* m_mouseClickHandler;
+	sf::Sound* m_sound;
 public:
 	Goal(engine::Scene* scene);
 	~Goal();
