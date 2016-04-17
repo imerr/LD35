@@ -536,12 +536,6 @@
           "target": "two"
         },
         {
-          "childData" : "assets/scripts/magic_light.json",
-          "position" : [ 897, 255 ],
-          "moving": true,
-          "moveSpeed": 10
-        },
-        {
           "childData" : "assets/scripts/tip.json",
           "position" : [ 1182, 781 ],
           "tip": "Mice are too light to activate switches.. something heavier could though"
