@@ -1,0 +1,15 @@
+{
+  "type": "sprite",
+  "origin": "center",
+  "opaque": false,
+  "size": [166, 68],
+  "sprite": {
+    "texture": "assets/images/brick_floor.png"
+  },
+  "body": {
+    "type": "static",
+    "shapes": [
+      {"type": "box", "width": 166, "height": 56, "y": 6}
+    ]
+  }
+}

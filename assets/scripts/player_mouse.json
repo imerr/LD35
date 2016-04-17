@@ -2,6 +2,7 @@
   "type": "player",
   "size": [52, 20],
   "origin": "center",
+  "opaque": false,
   "player": {
     "canFly": false,
     "canMove": true,
@@ -38,7 +39,6 @@
     "linearDamping": 0.8,
     "shapes": [
       {"friction": 0, "type": "box", "width": 50, "height": 10, "x": 0, "y": -6},
-      {"friction": 1.0, "type": "box", "width": 33, "height": 14, "x": 0, "y": -4},
       {"friction": 1.0, "type": "circle", "radius":7, "x": -17, "y": -4},
       {"friction": 1.0, "type": "circle", "radius":7, "x": 17, "y": -4}
     ]

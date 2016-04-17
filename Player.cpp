@@ -11,6 +11,7 @@
 
 #include <Engine/util/json.hpp>
 #include <Engine/Game.hpp>
+#include <Engine/ResourceManager.hpp>
 
 #include <SFML/Window.hpp>
 
@@ -44,7 +45,7 @@ Player::Player(engine::Scene* scene) : SpriteNode(scene), m_canMove(true), m_can
 			other = static_cast<engine::Node*>(A);
 			fixture = contact->GetFixtureB();
 		}
-		if (!other ||other->GetType() >= engine::NT_END) return;
+		if (!other ||other->GetType() >= engine::NT_END && other->GetType() != NT_ONEWAYPLATFORM) return;
 		if (A == this || B == this) {
 			if (fixture->GetFriction() >= 0.3) {
 				if (begin) {
@@ -61,10 +62,14 @@ Player::Player(engine::Scene* scene) : SpriteNode(scene), m_canMove(true), m_can
 				void* A = contact->GetFixtureA()->GetBody()->GetUserData();
 				void* B = contact->GetFixtureB()->GetBody()->GetUserData();
 				engine::Node* other = nullptr;
+				b2Fixture* otherFixture = nullptr;
+
 				if (A == this) {
 					other = static_cast<engine::Node*>(B);
+					otherFixture = contact->GetFixtureB();
 				} else if (B == this) {
 					other = static_cast<engine::Node*>(A);
+					otherFixture = contact->GetFixtureA();
 				}
 				if (!other) return;
 				if (other->GetType() == NT_RUNE) {
@@ -89,12 +94,39 @@ Player::Player(engine::Scene* scene) : SpriteNode(scene), m_canMove(true), m_can
 					contact->SetEnabled(false);
 					static_cast<Tip*>(other)->Show();
 				}
+				if (other->GetType() == NT_ONEWAYPLATFORM) {
+					if (this->m_canFly) {
+						contact->SetEnabled(false);
+						return;
+					}
+
+					b2AABB aabb;
+					b2AABB myAABB;
+					b2AABB myAABB_;
+					otherFixture->GetShape()->ComputeAABB(&aabb, otherFixture->GetBody()->GetTransform(), 0 /* we only have boxes */);
+					auto f = this->m_body->GetFixtureList();
+					while (f != nullptr) {
+						f->GetShape()->ComputeAABB(&myAABB_, m_body->GetTransform(), 0);
+						f = f->GetNext();
+						myAABB.Combine(myAABB_);
+					}
+					if (myAABB.upperBound.y > aabb.upperBound.y) {
+						contact->SetEnabled(false);
+					}
+				}
 			});
 	static_cast<Level*>(scene)->SetPlayer(this);
-
+	m_explodeSound.reset(engine::ResourceManager::instance()->MakeSound("assets/sound/explode.ogg"));
+	m_lightRayHandler = OnLightRay.MakeHandler([this](const engine::Light* light) {
+		auto c = light->GetLightColor();
+		if (c.r > c.b + c.g){ // red light!
+			this->Die();
+		}
+	});
 }
 
 Player::~Player() {
+	OnLightRay.RemoveHandler(m_lightRayHandler);
 	m_scene->OnContact.RemoveHandler(m_contactHandler);
 	m_scene->OnContactPreSolve.RemoveHandler(m_presolveContactHandler);
 	m_scene->GetGame()->OnMouseClick.RemoveHandler(m_mouseclickHandler);
@@ -127,11 +159,11 @@ void Player::OnUpdate(sf::Time interval) {
 	if (m_canMove && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		// move towards mouse
 		if (m_canFly) {
-			vel.x = std::min(m_speed.x, fabsf((pos.x - toPos.x) / m_scene->GetPixelMeterRatio()));
+			vel.x = std::min(m_speed.x, 3 * fabsf((pos.x - toPos.x) / m_scene->GetPixelMeterRatio()));
 			if (toPos.x < pos.x) {
 				vel.x *= -1;
 			}
-			vel.y = std::min(m_speed.y, fabsf((pos.y - toPos.y) / m_scene->GetPixelMeterRatio()));
+			vel.y =std::min(m_speed.y, 3 * fabsf((pos.y - toPos.y) / m_scene->GetPixelMeterRatio()));
 			if (toPos.y < pos.y) {
 				vel.y *= -1;
 			}
@@ -200,8 +232,28 @@ void Player::ShapeShift(std::string what) {
 	engine::Node* explosion = engine::Factory::CreateChildFromFile("assets/scripts/explosion.json", m_scene);
 	n->SetPosition(GetPosition().x, GetPosition().y - GetSize().y / 2 - n->GetSize().y);
 	explosion->SetPosition(GetPosition().x, GetPosition().y + 180);
+	static_cast<Player*>(n)->PlayExplodeSound();
 	Delete();
 }
+
+void Player::PlayExplodeSound() {
+	if (m_explodeSound) {
+		m_explodeSound->play();
+	}
+}
+
+void Player::Die() {
+	if (!m_active) return;
+	engine::Node* explosion = engine::Factory::CreateChildFromFile("assets/scripts/explosion.json", m_scene);
+	explosion->SetPosition(GetPosition().x, GetPosition().y + 180);
+	PlayExplodeSound();
+	SetActive(false);
+	static_cast<Level*>(m_scene)->Lost();
+}
+
+
+
+
 
 
 

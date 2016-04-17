@@ -33,7 +33,7 @@
           "type": "dynamic",
           "gravityScale": 0.1,
           "shapes": [
-            {"type": "box", "width": 8, "height": 8, "mask": 65535}
+            {"type": "box", "width": 8, "height": 8}
           ]
         }
       },

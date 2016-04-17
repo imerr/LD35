@@ -4,6 +4,8 @@
 #include "Rune.hpp"
 #include "Goal.hpp"
 #include "Tip.hpp"
+#include "MagicLight.hpp"
+#include "OneWayPlatform.hpp"
 #include <Engine/Factory.hpp>
 
 int main() {
@@ -12,6 +14,8 @@ int main() {
 	engine::Factory::RegisterType("rune", engine::Factory::CreateChildNode<Rune>);
 	engine::Factory::RegisterType("goal", engine::Factory::CreateChildNode<Goal>);
 	engine::Factory::RegisterType("tip", engine::Factory::CreateChildNode<Tip>);
+	engine::Factory::RegisterType("magicLight", engine::Factory::CreateChildNode<MagicLight>);
+	engine::Factory::RegisterType("oneWayPlatform", engine::Factory::CreateChildNode<OneWayPlatform>);
 
 	LD35 game;
 	game.run();

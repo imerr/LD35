@@ -24,7 +24,7 @@
   "body": {
     "type": "static",
     "shapes": [
-      {"type": "circle", "radius": 150}
+      {"type": "circle", "radius": 100}
     ]
   }
 

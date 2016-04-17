@@ -7,6 +7,8 @@
 
 #include <Engine/SpriteNode.hpp>
 #include <Engine/util/Event.hpp>
+#include <SFML/Audio.hpp>
+#include <memory>
 
 class Rune;
 
@@ -25,6 +27,9 @@ protected:
 	engine::util::BaseEventHandler* m_contactHandler;
 	engine::util::BaseEventHandler* m_presolveContactHandler;
 	engine::util::BaseEventHandler* m_mouseclickHandler;
+	engine::util::BaseEventHandler* m_lightRayHandler;
+	//
+	std::unique_ptr<sf::Sound> m_explodeSound;
 public:
 	Player(engine::Scene* scene);
 	~Player();
@@ -34,6 +39,9 @@ protected:
 	virtual void OnUpdate(sf::Time interval);
 
 
+	void PlayExplodeSound();
+
+	void Die();
 };
 
 

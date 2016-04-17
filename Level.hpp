@@ -11,6 +11,10 @@ class Level: public engine::Scene {
 protected:
 	Player* m_player;
 	std::string m_next;
+	bool m_paused;
+	bool m_lost;
+	bool m_won;
+	engine::util::BaseEventHandler* m_mouseClickHandler;
 public:
 	Level(engine::Game* game);
 	~Level();
@@ -25,7 +29,11 @@ public:
 
 	virtual bool initialize(Json::Value& root);
 
+	virtual void update(sf::Time interval);
+
 	void Next();
+	void Lost();
+	void Won();
 };
 
 

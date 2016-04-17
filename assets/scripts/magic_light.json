@@ -1,0 +1,40 @@
+{
+  "type": "magicLight",
+  "origin": "center",
+  "size": [78, 46],
+  "position": [0,0],
+  "sprite": {
+    "sheet": {
+      "texture": "assets/images/magic_light.png",
+      "sprites": [
+        {"left": 0, "top": 0, "width": 78, "height": 46}
+      ]
+    }
+  },
+  "children": [
+    {
+      "type": "sprite",
+      "origin": "center",
+      "position": [37, 43],
+      "size": [46, 34],
+      "sprite": {
+        "sheet": {
+          "texture": "assets/images/magic_light.png",
+          "sprites": [
+            {"left": 0, "top": 46, "width": 46, "height": 34}
+          ]
+        }
+      },
+      "children": [
+        {
+          "type": "light",
+          "position": [21, 32],
+          "color": [250, 43, 20],
+          "openingAngle": 30,
+          "radius": 250,
+          "angle": 75
+        }
+      ]
+    }
+  ]
+}

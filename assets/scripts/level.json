@@ -5,8 +5,8 @@
   "debug": false,
   "next": "assets/scripts/level.json",
   "light" : {
-    "enabled": false,
-    "ambient": [50, 50, 50]
+    "enabled": true,
+    "ambient": [80, 80, 80]
   },
   "ui": [
     {
@@ -48,6 +48,43 @@
     },
     {
       "type": "text",
+      "identifier": "lost",
+      "origin": "center",
+      "position": [512, 280],
+      "text": {
+        "font": "assets/lcd_solid.ttf",
+        "size": 20,
+        "text": "Oh no! :( You lost... Right-Click to try again",
+        "align": "center"
+      },
+      "active": false
+    },
+    {
+      "type": "sprite",
+      "identifier": "paused",
+      "origin": "top-left",
+      "size": [1024, 576],
+      "active": false,
+      "sprite": {
+        "texture": "assets/images/paused.png"
+      },
+      "children": [
+        {
+          "type": "text",
+          "identifier": "won",
+          "origin": "center",
+          "position": [512, 280],
+          "text": {
+            "font": "assets/lcd_solid.ttf",
+            "size": 20,
+            "text": "Right-click to continue",
+            "align": "center"
+          }
+        }
+      ]
+    },
+    {
+      "type": "text",
       "origin": "center",
       "position": [0, 560],
       "text": {
@@ -76,26 +113,660 @@
             "type": "edge",
             "points": [[3072, 1620], [3072, 0]]
           },
-          { "type": "edge", "points": [[3072, 0], [0, 0]] },
-          { "type": "edge", "points": [[0, 260], [984, 260]] },
-          { "type": "edge", "points": [[552, 744], [1752, 744]] },
-          { "type": "chain", "points": [[1956, 216], [1860, 600], [1860, 1390], [1632, 1390], [1644, 468], [1548, 216], [1956, 216]] },
-          { "type": "chain", "points": [[0, 1428], [336, 1452],[624, 1476], [948, 1488], [1620, 1488], [3072, 1488]] }
+          { "type": "edge", "points": [[3072, 0], [0, 0]] }
         ]
       }
     },
-    {"childData" : "assets/scripts/bg.json"},
     {
-      "type": "sprite",
-      "size": [3072, 1620],
+      "type": "bg",
+      "origin": "top-left",
+      "size": [2048, 1152],
       "sprite": {
-        "texture": "assets/images/level1.png"
+        "sheet":  {
+          "texture":"assets/images/bg2_wall.png",
+          "sprites": [
+            {"width": 996, "height": 560}
+          ]
+        }
       }
     },
-    {"childData" : "assets/scripts/tip.json", "position": [152, 228], "tip": "You can move by left-clicking where you want to go"},
-    {"childData" : "assets/scripts/rune_mouse.json", "position": [792, 1332]},
-    {"childData" : "assets/scripts/rune_bird.json", "position": [3000, 1356]},
-    {"childData" : "assets/scripts/goal.json", "position": [1754, 142]},
-    {"childData" : "assets/scripts/player_eye.json", "position": [152, 228]}
+    {
+      "type": "bg",
+      "origin": "top-left",
+      "size": [2560, 1440],
+      "sprite": {
+        "sheet":  {
+          "texture":"assets/images/bg2_arch.png",
+          "sprites": [
+            {"width": 412, "height": 230}
+          ]
+        }
+      }
+    },
+    {
+      "children" : [
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 84.000022888183594, 392 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 250, 392 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 416, 392 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 582, 392 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 748, 392 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor_corner.json",
+          "position" : [ 847, 392 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip.json",
+          "position" : [ 250, 450 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip.json",
+          "position" : [ 602, 450 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 847, 450 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor_corner_left.json",
+          "position" : [ 995, 392 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 1092, 392 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 1258, 392 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor_corner.json",
+          "position" : [ 1359, 392 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip_small.json",
+          "position" : [ 1066, 450 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip_small.json",
+          "position" : [ 1232, 450 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1359, 450 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip_small.json",
+          "position" : [ 1258, 450 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip_small.json",
+          "position" : [ 1066, 498 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 1359, 498 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip_small.json",
+          "position" : [ 1258, 498 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip_small.json",
+          "position" : [ 1137, 498 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 1021, 321 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1021, 273 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1021, 225 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1021, 177 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1021, 129 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1021, 81 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1021, 33 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1021, 15 ]
+        },
+        {
+          "childData" : "assets/scripts/goal.json",
+          "position" : [ 1141, 291 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip_small.json",
+          "position" : [ 1066, 546 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip_small.json",
+          "position" : [ 1066, 594 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip_small.json",
+          "position" : [ 1066, 642 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip_small.json",
+          "position" : [ 1066, 690 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 900, 680 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 734, 680 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 568, 680 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 402, 680 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 236, 680 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor_corner_left.json",
+          "position" : [ 139, 680 ]
+        },
+        {
+          "childData" : "assets/scripts/tip.json",
+          "position" : [ 787, 615 ],
+          "tip": "Looks like they put up their magic beam defenses... Better not touch that"
+        },
+        {
+          "childData" : "assets/scripts/rune_mouse.json",
+          "position" : [ 262, 885 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 145, 738 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 145, 786 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 145, 834 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 145, 881 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 145, 929 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor_corner_left.json",
+          "position" : [ 140, 1001 ]
+        },
+        {
+          "childData" : "assets/scripts/magic_light.json",
+          "moving": true,
+          "moveSpeed": 30,
+          "position" : [ 68, 497 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 237, 1001 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 403, 1001 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 569, 1001 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1117, 1114 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 397, 738 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 397, 786 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 83, 1344 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 248, 1344 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 415, 1344 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 581, 1344 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 146, 1059 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 146, 1107 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 146, 1155 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 216, 1306 ]
+        },
+        {
+          "childData" : "assets/scripts/magic_light.json",
+          "position" : [ 200, 1058 ],
+          "moving": true,
+          "moveSpeed": 20
+        },
+        {
+          "childData" : "assets/scripts/brick_pillar_top.json",
+          "position" : [ 215, 1272 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 322, 1057 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 322, 1105 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 488, 1307 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 489, 1259 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 489, 1211 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 489, 1163 ]
+        },
+        {
+          "childData" : "assets/scripts/magic_light.json",
+          "position" : [ 360, 1080 ],
+          "rotation" : 270,
+          "moving": false,
+          "switching": true,
+          "onTime": 5,
+          "offTime": 2.5
+        },
+        {
+          "childData" : "assets/scripts/magic_light.json",
+          "position" : [ 550, 1300 ],
+          "rotation" : 180,
+          "moving": false,
+          "switching": true,
+          "onTime": 5,
+          "offTime": 5
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 634, 1059 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_pillar_top.json",
+          "position" : [ 488, 1153 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 634, 1107 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 747, 1344 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 848, 1354 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 847, 1307 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 847, 1259 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 847, 1211 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_pillar_top.json",
+          "position" : [ 847, 1153 ]
+        },
+        {
+          "childData" : "assets/scripts/magic_light.json",
+          "position" : [ 918, 1115 ],
+          "rotation" : 90,
+          "moving": false,
+          "switching": true,
+          "onTime": 8,
+          "offTime": 3
+        },
+        {
+          "childData" : "assets/scripts/brick_floor_corner_left.json",
+          "position" : [ 860, 1199 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 958, 1199 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 1059, 1209 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1059, 1163 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1059, 1115 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 959, 1113 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 959, 1065 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1059, 1067 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 846, 1078 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 847, 1030 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor_corner_left.json",
+          "position" : [ 861, 1020 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 958, 1020 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor.json",
+          "position" : [ 1124, 1020 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 1225, 1030 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_floor_corner.json",
+          "position" : [ 1225, 1020 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip_small.json",
+          "position" : [ 1232, 546 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip_small.json",
+          "position" : [ 1232, 594 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip_small.json",
+          "position" : [ 1232, 642 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_strip_small.json",
+          "position" : [ 1232, 690 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1333, 546 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1333, 594 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1333, 642 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 1333, 690 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1359, 358 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1359, 310 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1359, 262 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 1359, 213 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_pillar_top.json",
+          "position" : [ 1359, 156 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 669, 1011 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 669, 964 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 669, 916 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 669, 868 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_pillar_top.json",
+          "position" : [ 669, 811 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner_bottom.json",
+          "position" : [ 847, 982 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 846, 934 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 846, 886 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 847, 838 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 846, 790 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 846, 742 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 847, 753 ]
+        },
+        {
+          "childData" : "assets/scripts/brick_corner.json",
+          "position" : [ 846, 739 ]
+        },
+        {
+          "childData" : "assets/scripts/magic_light.json",
+          "position" : [ 628, 935 ],
+          "rotation" : 90,
+          "moving": true,
+          "moveSpeed": 10
+        },
+        {
+          "childData" : "assets/scripts/magic_light.json",
+          "position" : [ 430, 758 ],
+          "rotation" : 270,
+          "moving": true,
+          "moveSpeed": 5
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 963, 391 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 963, 431 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 962, 471 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 963, 510 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 963, 551 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 962, 591 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 962, 631 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 104, 938 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 104, 977 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 104, 897 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 104, 858 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 104, 818 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 104, 778 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 104, 738 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 104, 698 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 104, 658 ]
+        },
+        {
+          "childData" : "assets/scripts/ladder.json",
+          "position" : [ 104, 618 ]
+        }
+      ]
+    },
+    {
+      "childData" : "assets/scripts/player_bird.json",
+      "position" : [ 200, 200 ]
+    },//*/
+    {
+      "type": "node",
+      "objects": [
+        "assets/scripts/ladder.json",
+        "assets/scripts/magic_light.json",
+        "assets/scripts/brick_strip_small.json",
+        "assets/scripts/brick_strip.json",
+        "assets/scripts/brick_floor.json",
+        "assets/scripts/brick_floor_corner.json",
+        "assets/scripts/brick_floor_corner_left.json",
+        "assets/scripts/brick_pillar_top.json",
+        "assets/scripts/brick_corner.json",
+        "assets/scripts/brick_corner_bottom.json",
+        "assets/scripts/tip.json",
+        "assets/scripts/rune_mouse.json",
+        "assets/scripts/rune_bird.json",
+        "assets/scripts/goal.json"
+      ]
+    }
   ]
 }

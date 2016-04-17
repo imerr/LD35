@@ -2,6 +2,7 @@
   "type": "player",
   "size": [40, 76],
   "origin": "center",
+  "opaque": false,
   "player": {
     "canFly": true,
     "canMove": true,
@@ -34,7 +35,7 @@
     "gravityScale": 0,
     "linearDamping": 0.8,
     "shapes": [
-      {"type": "box", "width": 20, "height": 70, "x": 0, "y": 0},
+      {"type": "box", "width": 20, "height": 50, "x": 0, "y": 0},
       {"type": "box", "width": 35, "height": 12, "x": 0, "y": 0}
     ]
   }

@@ -1,0 +1,15 @@
+{
+  "type": "oneWayPlatform",
+  "size": [42, 40],
+  "origin": "center",
+  "sprite": {
+    "texture": "assets/images/ladder.png"
+  },
+  "body": {
+    "type": "static",
+    "shapes": [
+      {"type": "box", "width": 40, "height": 4, "y": -6},
+      {"type": "box", "width": 40, "height": 4, "y": 14}
+    ]
+  }
+}

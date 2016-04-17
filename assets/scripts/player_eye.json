@@ -1,6 +1,7 @@
 {
   "type": "player",
   "size": [160, 170],
+  "opaque": false,
   "origin": "center",
   "player": {
     "canFly": false,

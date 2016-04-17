@@ -1,0 +1,15 @@
+{
+  "type": "sprite",
+  "origin": "center",
+  "opaque": false,
+  "size": [36, 68],
+  "sprite": {
+    "texture": "assets/images/brick_floor_corner.png"
+  },
+  "body": {
+    "type": "static",
+    "shapes": [
+      {"type": "box", "width": 36, "height": 56, "y": 6}
+    ]
+  }
+}
