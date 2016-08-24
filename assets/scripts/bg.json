@@ -1,5 +1,5 @@
 {
-  "type": "bg",
+  "type": "parallaxBackground",
   "origin": "top-left",
   "size": [2048, 1152],
   "sprite": {

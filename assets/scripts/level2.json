@@ -129,7 +129,7 @@
       }
     },
     {
-      "type": "bg",
+      "type": "parallaxBackground",
       "origin": "top-left",
       "size": [2048, 1152],
       "sprite": {
@@ -142,7 +142,7 @@
       }
     },
     {
-      "type": "bg",
+      "type": "parallaxBackground",
       "origin": "top-left",
       "size": [2560, 1440],
       "sprite": {
