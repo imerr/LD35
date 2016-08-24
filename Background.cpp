@@ -20,7 +20,7 @@ Background::~Background() {
 
 void Background::draw(sf::RenderTarget& target, sf::RenderStates states, float delta) {
 	auto view = m_scene->GetGame()->GetWindow()->getView();
-	auto wSize = m_scene->GetGame()->GetWindow()->getSize();
+	auto wSize = view.getSize();
 	sf::Vector2f viewPos(view.getCenter().x - wSize.x / 2.0f,
 						 view.getCenter().y - wSize.y / 2.0f);
 	auto levelSize = m_scene->GetSize();

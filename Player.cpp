@@ -206,7 +206,7 @@ void Player::OnUpdate(sf::Time interval) {
 	}
 	// Center world on player
 	auto view = m_scene->GetGame()->GetWindow()->getView();
-	auto windowSize = m_scene->GetGame()->GetWindow()->getSize();
+	auto windowSize = view.getSize();
 	auto levelSize = m_scene->GetSize();
 	sf::Vector2f center(pos);
 	if (center.x < windowSize.x / 2) {
